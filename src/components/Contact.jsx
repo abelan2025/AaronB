@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useChaos } from '../context/ChaosContext';
 import '../styles/Contact.css';
 
 const Contact = () => {
+    const { injectChaos } = useChaos();
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -16,11 +20,25 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Placeholder for form submission logic
-        alert('Thanks for reaching out! This is a demo form.');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setStatus('loading');
+        setErrorMessage('');
+
+        try {
+            // Simulate API call with potential chaos
+            await injectChaos();
+
+            // Success path
+            setStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+            setTimeout(() => setStatus('idle'), 3000); // Reset success message
+        } catch (error) {
+            // Error path (Chaos or real)
+            console.error("Submission failed:", error);
+            setStatus('error');
+            setErrorMessage(error.message);
+        }
     };
 
     return (
@@ -92,7 +110,44 @@ const Contact = () => {
                                 required
                             ></textarea>
                         </div>
-                        <button type="submit" className="btn-primary submit-btn">Send Message</button>
+
+                        {/* Status Feedback */}
+                        {status === 'error' && (
+                            <div className="status-message error" style={{
+                                color: '#ef4444',
+                                background: 'rgba(239, 68, 68, 0.1)',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                marginBottom: '1rem',
+                                border: '1px solid #ef4444'
+                            }}>
+                                ⚠️ <strong>Error:</strong> {errorMessage}
+                            </div>
+                        )}
+                        {status === 'success' && (
+                            <div className="status-message success" style={{
+                                color: '#22c55e',
+                                background: 'rgba(34, 197, 94, 0.1)',
+                                padding: '10px',
+                                borderRadius: '4px',
+                                marginBottom: '1rem',
+                                border: '1px solid #22c55e'
+                            }}>
+                                ✅ Message sent successfully!
+                            </div>
+                        )}
+
+                        <button
+                            type="submit"
+                            className="btn-primary submit-btn"
+                            disabled={status === 'loading'}
+                            style={{
+                                opacity: status === 'loading' ? 0.7 : 1,
+                                cursor: status === 'loading' ? 'not-allowed' : 'pointer'
+                            }}
+                        >
+                            {status === 'loading' ? 'Sending...' : 'Send Message'}
+                        </button>
                     </form>
                 </div>
             </div>
