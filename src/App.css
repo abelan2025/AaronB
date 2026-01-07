@@ -1,0 +1,5 @@
+/* App-specific styles if needed, otherwise global variables handle most things */
+.app {
+  min-height: 100vh;
+  position: relative;
+}
