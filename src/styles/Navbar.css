@@ -51,7 +51,7 @@
 
 .navbar-menu .btn-primary {
     background: var(--accent-primary);
-    color: #fff;
+    color: var(--bg-primary);
     padding: 0.5rem 1.25rem;
     border-radius: 4px;
     transition: all var(--transition-medium);

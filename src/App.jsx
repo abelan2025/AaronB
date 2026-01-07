@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
 import './App.css';
+
+// Lazy load below-the-fold components
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services'));
+const Experience = lazy(() => import('./components/Experience'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   return (
@@ -13,10 +15,12 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Experience />
-        <Contact />
+        <Suspense fallback={<div className="loading-fallback">Loading...</div>}>
+          <About />
+          <Services />
+          <Experience />
+          <Contact />
+        </Suspense>
       </main>
     </div>
   );

@@ -34,6 +34,7 @@
 .hero-title .highlight {
     background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     /* Fallback or enhancement */
     color: var(--text-primary);
@@ -63,7 +64,7 @@
 
 .btn-primary {
     background: var(--accent-primary);
-    color: #fff;
+    color: var(--bg-primary);
     border: 1px solid var(--accent-primary);
 }
 
@@ -71,6 +72,7 @@
     background: var(--accent-secondary);
     border-color: var(--accent-secondary);
     box-shadow: 0 0 20px var(--accent-glow);
+    color: #fff;
 }
 
 .btn-secondary {
