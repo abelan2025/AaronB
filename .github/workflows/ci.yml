@@ -1,0 +1,57 @@
+name: CI/CD Portfolio
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+
+  cypress-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Cypress Run
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm run preview
+          wait-on: 'http://localhost:4173'
+
+  playwright-test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.49.0-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Run Playwright tests
+        run: |
+          npm run build
+          npx playwright install --with-deps
+          npm run preview &
+          npx wait-on http://localhost:4173
+          npm run test:pw
