@@ -52,6 +52,4 @@ jobs:
         run: |
           npm run build
           npx playwright install --with-deps
-          npm run preview &
-          npx wait-on http://localhost:4173
           npm run test:pw

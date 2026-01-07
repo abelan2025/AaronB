@@ -8,14 +8,14 @@ describe('Portfolio Smoke Test', () => {
 
         // Check Navigation
         cy.get('.navbar').should('be.visible');
-        cy.get('a[href="#about"]').click();
+        cy.get('[data-cy="nav-about"]').click();
 
         // Check About Section (should be visible after scroll)
         cy.get('#about').should('be.visible');
         cy.contains('Technical Arsenal').should('be.visible');
 
         // Check Contact Form
-        cy.get('a[href="#contact"]').click();
-        cy.get('.contact-form').should('be.visible');
+        cy.get('[data-cy="nav-contact"]').click();
+        cy.get('[data-cy="contact-form"]').should('be.visible');
     });
 });

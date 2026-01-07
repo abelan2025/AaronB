@@ -47,7 +47,7 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <form className="contact-form" onSubmit={handleSubmit}>
+                    <form className="contact-form" onSubmit={handleSubmit} data-cy="contact-form">
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input
