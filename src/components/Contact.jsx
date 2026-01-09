@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useChaos } from '../context/ChaosContext';
+import emailjs from '@emailjs/browser';
 import '../styles/Contact.css';
 
 const Contact = () => {
-    const { injectChaos } = useChaos();
     const [status, setStatus] = useState('idle'); // idle, loading, success, error
     const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
@@ -26,18 +25,31 @@ const Contact = () => {
         setErrorMessage('');
 
         try {
-            // Simulate API call with potential chaos
-            await injectChaos();
+            // Simulate API call
+
+            const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+            if (serviceId && templateId && publicKey) {
+                // Real email sending
+                await emailjs.sendForm(serviceId, templateId, e.target, publicKey);
+                // console.log('Email sent via EmailJS');
+            } else {
+                // Simulation fallback
+                console.log('Simulation: Main email sent to: aaronrbelanger@gmail.com');
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Fake delay
+            }
 
             // Success path
             setStatus('success');
             setFormData({ name: '', email: '', subject: '', message: '' });
             setTimeout(() => setStatus('idle'), 3000); // Reset success message
         } catch (error) {
-            // Error path (Chaos or real)
+            // Error path
             console.error("Submission failed:", error);
             setStatus('error');
-            setErrorMessage(error.message);
+            setErrorMessage(error.text || error.message || 'Something went wrong');
         }
     };
 
@@ -54,7 +66,7 @@ const Contact = () => {
                         </p>
                         <div className="contact-details">
                             <div className="contact-item">
-                                <strong>Email:</strong> <a href="mailto:aaron@example.com">hello@aaronbelanger.com</a>
+                                <strong>Email:</strong> <a href="mailto:aaronrbelanger@gmail.com">aaronrbelanger@gmail.com</a>
                             </div>
                             <div className="contact-item">
                                 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/aaron-belanger-459ba164" target="_blank" rel="noopener noreferrer">aaron-belanger</a>
