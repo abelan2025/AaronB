@@ -1,0 +1,4 @@
+[build.environment]
+  # Tell Netlify to ignore these specific keys during security scanning
+  # These are client-side public keys required for EmailJS to function.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_EMAILJS_PUBLIC_KEY,VITE_EMAILJS_SERVICE_ID,VITE_EMAILJS_TEMPLATE_ID"
