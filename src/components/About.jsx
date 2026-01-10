@@ -22,8 +22,7 @@ const About = () => {
                         </p>
                         <p>
                             My work spans the full quality lifecycle: from architecting <strong>CI/CD pipelines</strong> and
-                            automated test suites (Cypress, Playwright, K6) to leading <strong>production incident resolution</strong>
-                            and performance optimization. I believe quality engineering is about enabling teams to deploy confidently
+                            automated test suites (Cypress, Playwright, K6) to leading <strong>production incident resolution</strong> and performance optimization. I believe quality engineering is about enabling teams to deploy confidently
                             and iterate rapidly.
                         </p>
                         <p>
