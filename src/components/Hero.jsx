@@ -11,7 +11,7 @@ const Hero = () => {
                 </h1>
                 <p className="hero-description">
                     A Software Quality Engineer & SRE Specialist delivering resilient,
-                    high-performance, and <strong>accessible</strong> software solutions. I bridge the gap between
+                    high-performance, and accessible software solutions. I bridge the gap between
                     complex code and exceptional user experiences.
                 </p>
                 <div className="hero-actions">
