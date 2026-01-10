@@ -69,7 +69,7 @@ const Contact = () => {
                                 <strong>Email:</strong> <a href="mailto:aaronrbelanger@gmail.com">aaronrbelanger@gmail.com</a>
                             </div>
                             <div className="contact-item">
-                                <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/aaron-belanger-459ba164" target="_blank" rel="noopener noreferrer">aaron-belanger</a>
+                                <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/aaron-belanger-459ba164" target="_blank" rel="noopener noreferrer">aaron-belanger-459ba164</a>
                             </div>
                             <div className="contact-item">
                                 <strong>Location:</strong> Remote / Worldwide
