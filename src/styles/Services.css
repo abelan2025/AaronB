@@ -69,7 +69,10 @@
 }
 
 .service-description {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-size: 1rem;
     line-height: 1.6;
+    opacity: 0.9;
+    word-spacing: 0.1em;
+    letter-spacing: 0.01em;
 }
