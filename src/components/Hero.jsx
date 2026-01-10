@@ -10,9 +10,9 @@ const Hero = () => {
                     Hi, I'm <span className="highlight">Aaron Belanger</span>
                 </h1>
                 <p className="hero-description">
-                    A Software Quality Engineer & SRE Specialist delivering bug-free,
-                    high-performance software solutions. I bridge the gap between
-                    complex code and flawless user experiences.
+                    A Software Quality Engineer & SRE Specialist delivering resilient,
+                    high-performance, and <strong>accessible</strong> software solutions. I bridge the gap between
+                    complex code and exceptional user experiences.
                 </p>
                 <div className="hero-actions">
                     <a href="#contact" className="btn-primary">Hire Me</a>
@@ -20,7 +20,6 @@ const Hero = () => {
                 </div>
             </div>
             <div className="hero-visual fade-in" style={{ animationDelay: '0.3s' }}>
-                {/* Placeholder for abstract tech visual or illustration */}
                 <div className="abstract-shape"></div>
             </div>
         </section>

@@ -3,7 +3,7 @@ import '../styles/About.css';
 
 const skills = [
     "Cypress", "Playwright", "K6 (Performance)", "Postman/API Testing",
-    "CI/CD Pipelines", "Test Strategy Design", "Code Review",
+    "CI/CD Pipelines", "Test Strategy Design", "Accessibility (a11y)", "Code Review",
     "JavaScript/TypeScript", "Python", "Application Logs & Telemetry",
     "Production Incident Response", "Mentoring & Leadership", "Jira/Bug Tracking"
 ];
@@ -24,6 +24,10 @@ const About = () => {
                             My work spans the full quality lifecycle: from architecting <strong>CI/CD pipelines</strong> and
                             automated test suites (Cypress, Playwright, K6) to leading <strong>production incident resolution</strong> and performance optimization. I believe quality engineering is about enabling teams to deploy confidently
                             and iterate rapidly.
+                        </p>
+                        <p>
+                            I am a strong advocate for <strong>User Experience (UX) and Accessibility</strong>. I ensure that software
+                            isn't just functional, but inclusive and intuitive for all users—because true quality means quality for everyone.
                         </p>
                         <p>
                             Beyond testing, I bring <strong>SRE expertise</strong> in observability, system reliability, and

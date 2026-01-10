@@ -34,7 +34,6 @@ const Contact = () => {
             if (serviceId && templateId && publicKey) {
                 // Real email sending
                 await emailjs.sendForm(serviceId, templateId, e.target, publicKey);
-                // console.log('Email sent via EmailJS');
             } else {
                 // Simulation fallback
                 await new Promise(resolve => setTimeout(resolve, 1000)); // Fake delay
