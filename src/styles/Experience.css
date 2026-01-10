@@ -21,11 +21,12 @@
     margin: 0 auto;
     padding: 6rem 2rem;
     position: relative;
+    /* Ensure container has height for the absolute positioning to work */
 }
 
 .timeline-track {
     position: relative;
-    min-height: 400px;
+    min-height: 500px;
 }
 
 /* Horizontal Timeline Line - Desktop */
@@ -44,42 +45,19 @@
 .timeline-experiences {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
-    position: relative;
+    gap: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .timeline-experience {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
-}
-
-/* Alternating Layout - Even items go above, odd items go below */
-.timeline-experience:nth-child(even) {
-    padding-bottom: 4rem;
-}
-
-.timeline-experience:nth-child(even) .experience-content {
-    order: 1;
-    margin-bottom: 1.5rem;
-}
-
-.timeline-experience:nth-child(even) .timeline-dot {
-    order: 2;
-}
-
-.timeline-experience:nth-child(odd) {
-    padding-top: 4rem;
-}
-
-.timeline-experience:nth-child(odd) .timeline-dot {
-    order: 1;
-}
-
-.timeline-experience:nth-child(odd) .experience-content {
-    order: 2;
-    margin-top: 1.5rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .timeline-dot {
@@ -88,11 +66,13 @@
     background: var(--accent-primary);
     border: 4px solid var(--bg-primary);
     border-radius: 50%;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
     box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
     transition: all var(--transition-medium);
-    flex-shrink: 0;
 }
 
 .timeline-dot::before {
@@ -109,14 +89,29 @@
 }
 
 .timeline-experience:hover .timeline-dot {
-    transform: scale(1.3);
+    transform: translate(-50%, -50%) scale(1.3);
     box-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow);
 }
 
+/* Content Positioning - Desktop */
 .experience-content {
+    position: absolute;
     text-align: center;
-    padding: 1.5rem;
-    max-width: 280px;
+    width: 100%;
+    padding: 0 1rem;
+    max-width: 300px;
+}
+
+/* Even - Content Above */
+.timeline-experience:nth-child(even) .experience-content {
+    bottom: 50%;
+    padding-bottom: 2.5rem;
+}
+
+/* Odd - Content Below */
+.timeline-experience:nth-child(odd) .experience-content {
+    top: 50%;
+    padding-top: 2.5rem;
 }
 
 .experience-company {
@@ -162,11 +157,6 @@
 @media (max-width: 1024px) {
     .timeline-experiences {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
-    .timeline-container {
-        padding: 4rem 1.5rem;
     }
 }
 
@@ -178,6 +168,7 @@
 
     .timeline-container {
         padding: 3rem 1rem;
+        /* Remove absolute positioning context if needed, but relative is fine */
     }
 
     .timeline-track {
@@ -195,27 +186,55 @@
     }
 
     .timeline-experiences {
+        position: relative;
+        display: flex;
+        flex-direction: column;
         grid-template-columns: 1fr;
         gap: 3rem;
         padding-left: 50px;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        height: auto;
     }
 
     .timeline-experience {
+        height: auto;
         flex-direction: row !important;
         align-items: flex-start;
-        padding: 0 !important;
-        gap: 1.5rem;
+        justify-content: flex-start;
+        /* Reset absolute positioning contexts */
     }
 
     .timeline-dot {
-        margin-top: 0.25rem;
         position: absolute;
         left: -50px;
+        top: 0.25rem;
+        margin-top: 0;
+        transform: none;
+        /* Reset absolute centering */
+    }
+
+    .timeline-experience:hover .timeline-dot {
+        transform: scale(1.3);
+        /* Remove reference to translate */
     }
 
     .experience-content {
+        position: relative;
         text-align: left;
+        width: auto;
+        max-width: none;
         padding: 0;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    .timeline-experience:nth-child(even) .experience-content,
+    .timeline-experience:nth-child(odd) .experience-content {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     .experience-company {
