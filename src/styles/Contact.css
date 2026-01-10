@@ -41,7 +41,7 @@
 }
 
 .contact-item a {
-    color: var(--text-secondary);
+    color: var(--accent-primary);
 }
 
 .contact-item a:hover {
