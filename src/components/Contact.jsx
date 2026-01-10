@@ -37,7 +37,6 @@ const Contact = () => {
                 // console.log('Email sent via EmailJS');
             } else {
                 // Simulation fallback
-                console.log('Simulation: Main email sent to: aaronrbelanger@gmail.com');
                 await new Promise(resolve => setTimeout(resolve, 1000)); // Fake delay
             }
 

@@ -2,9 +2,10 @@ import React from 'react';
 import '../styles/About.css';
 
 const skills = [
-    "Test Automation", "Manual Testing", "Site Reliability Engineering (SRE)",
-    "CI/CD Pipelines", "Performance Testing", "Bug Tracking (Jira)",
-    "JavaScript/TypeScript", "Python", "Selenium", "Cypress"
+    "Cypress", "Playwright", "K6 (Performance)", "Postman/API Testing",
+    "CI/CD Pipelines", "Test Strategy Design", "Code Review",
+    "JavaScript/TypeScript", "Python", "Application Logs & Telemetry",
+    "Production Incident Response", "Mentoring & Leadership", "Jira/Bug Tracking"
 ];
 
 const About = () => {
@@ -15,17 +16,19 @@ const About = () => {
                 <div className="about-content">
                     <div className="about-text">
                         <p>
-                            I am a dedicated <strong>Software Quality Engineer</strong> with a passion for breaking things before they reach the user.
-                            My journey involves a deep dive into both <strong>manual and automated testing</strong>, ensuring that every release meets the highest standards of reliability.
+                            I'm a <strong>Staff Quality Engineer</strong> with 8+ years of experience leading test automation
+                            and quality initiatives. I specialize in designing <strong>application-level testing strategies</strong>,
+                            building automate-first frameworks, and mentoring engineering teams to ship faster without compromising quality.
                         </p>
                         <p>
-                            Recently, I've expanded my expertise into <strong>Site Reliability Engineering (SRE)</strong>,
-                            focusing on system stability, observability, and scalability. I believe quality doesn't stop at deployment;
-                            it extends to how software performs in the wild.
+                            My work spans the full quality lifecycle: from architecting <strong>CI/CD pipelines</strong> and
+                            automated test suites (Cypress, Playwright, K6) to leading <strong>production incident resolution</strong>
+                            and performance optimization. I believe quality engineering is about enabling teams to deploy confidently
+                            and iterate rapidly.
                         </p>
                         <p>
-                            Whether you need someone to build a robust testing framework from scratch or consult on SRE best practices,
-                            I bring a holistic view of software quality to every project.
+                            Beyond testing, I bring <strong>SRE expertise</strong> in observability, system reliability, and
+                            performance tuning—ensuring software doesn't just work, but performs reliably at scale.
                         </p>
                     </div>
                     <div className="skills-container">
