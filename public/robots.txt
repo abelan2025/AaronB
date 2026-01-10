@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aaronbelanger.com/sitemap.xml
+Sitemap: https://aaronbelanger.netlify.app/sitemap.xml
